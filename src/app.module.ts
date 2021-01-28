@@ -1,21 +1,27 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { WinstonModule } from 'nest-winston';
 import { ShareModule } from './share/share.module';
 import { CoreModule } from './core/core.module';
 import { BusinessModule } from './business/business.module';
-import * as winston from 'winston';
+import { LoggerModule } from 'nestjs-pino';
+import { pinoHttpOption } from './config/pino-http-option.config';
 
 @Module({
   imports: [
-    WinstonModule.forRoot({
-      transports: [
-        new winston.transports.Console(),
-      ]
+    LoggerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        return { pinoHttp: pinoHttpOption(configService.get('NODE_ENV')) };
+      },
     }),
     TypeOrmModule.forRoot({
       autoLoadEntities: true
     }),
+
+
+
     ShareModule,
     CoreModule,
     BusinessModule

@@ -1,14 +1,15 @@
-import { Controller, Get, Inject } from '@nestjs/common';
-import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import { Logger } from 'winston';
+import { Controller, Get } from '@nestjs/common';
+import { User } from './user.entity';
+import { UserService } from './user.service';
+import { Logger } from 'nestjs-pino';
 
 @Controller('user')
 export class UserController {
-  constructor(@Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger) { }
+  constructor(private userService: UserService, private logger: Logger) { }
 
   @Get("test")
-  public Test(): number {
-    this.logger.info("test")
-    return 123;
+  async Test(): Promise<User[]> {
+    this.logger.warn("test")
+    return await this.userService.findAll();
   }
 }
