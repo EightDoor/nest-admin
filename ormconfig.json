@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "xka.start6.cn",
+  "port": 3306,
+  "username": "nest",
+  "password": "nest",
+  "database": "nest",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
