@@ -1,6 +1,6 @@
 {
   "type": "mysql",
-  "host": "xka.start6.cn",
+  "host": "127.0.0.1",
   "port": 3306,
   "username": "nest",
   "password": "nest",
