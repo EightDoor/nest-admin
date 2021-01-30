@@ -8,5 +8,6 @@
   "entities": [
     "dist/**/*.entity{.ts,.js}"
   ],
-  "synchronize": true
+  "synchronize": false,
+  "logging": "all"
 }

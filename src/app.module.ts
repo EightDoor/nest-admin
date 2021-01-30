@@ -21,7 +21,6 @@ import { pinoHttpOption } from './config/pino-http-option.config';
     }),
 
 
-
     ShareModule,
     CoreModule,
     BusinessModule

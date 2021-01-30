@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { User } from './user.entity';
+import { SysUser } from './user.entity';
 import { UserService } from './user.service';
 import { Logger } from 'nestjs-pino';
 
@@ -8,7 +8,7 @@ export class UserController {
   constructor(private userService: UserService, private logger: Logger) { }
 
   @Get("test")
-  async Test(): Promise<User[]> {
+  async Test(): Promise<SysUser[]> {
     this.logger.warn("test")
     return await this.userService.findAll();
   }

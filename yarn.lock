@@ -1920,7 +1920,7 @@ cli-cursor@^3.1.0:
 
 cli-highlight@^2.1.10:
   version "2.1.10"
-  resolved "https://registry.npm.taobao.org/cli-highlight/download/cli-highlight-2.1.10.tgz#26a087da9209dce4fcb8cf5427dc97cd96ac173a"
+  resolved "https://registry.npm.taobao.org/cli-highlight/download/cli-highlight-2.1.10.tgz?cache=0&sync_timestamp=1610119762804&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcli-highlight%2Fdownload%2Fcli-highlight-2.1.10.tgz#26a087da9209dce4fcb8cf5427dc97cd96ac173a"
   integrity sha1-JqCH2pIJ3OT8uM9UJ9yXzZasFzo=
   dependencies:
     chalk "^4.0.0"
@@ -6498,7 +6498,7 @@ typedarray@^0.0.6:
 
 typeorm@^0.2.30:
   version "0.2.30"
-  resolved "https://registry.npm.taobao.org/typeorm/download/typeorm-0.2.30.tgz#a0df2256402cbcdde8049a244437560495ce9b38"
+  resolved "https://registry.npm.taobao.org/typeorm/download/typeorm-0.2.30.tgz?cache=0&sync_timestamp=1610456778306&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypeorm%2Fdownload%2Ftypeorm-0.2.30.tgz#a0df2256402cbcdde8049a244437560495ce9b38"
   integrity sha1-oN8iVkAsvN3oBJokRDdWBJXOmzg=
   dependencies:
     "@sqltools/formatter" "1.2.2"
@@ -6820,7 +6820,7 @@ xml-name-validator@^3.0.0:
 
 xml2js@^0.4.23:
   version "0.4.23"
-  resolved "https://registry.npm.taobao.org/xml2js/download/xml2js-0.4.23.tgz?cache=0&sync_timestamp=1576776179444&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fxml2js%2Fdownload%2Fxml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
+  resolved "https://registry.npm.taobao.org/xml2js/download/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha1-oMaVFnUkIesqx1juTUzPWIQ+rGY=
   dependencies:
     sax ">=0.6.0"
