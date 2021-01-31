@@ -11,7 +11,6 @@ async function bootstrap() {
     // 关闭内置logger
     logger: true
   });
-  await app.listen(9102, '0.0.0.0');
 
   // swagger
   const config = new DocumentBuilder()
@@ -20,8 +19,9 @@ async function bootstrap() {
     .setVersion("1.0")
     .build()
   const document = SwaggerModule.createDocument(app, config)
-  SwaggerModule.setup("api", app, document)
+  SwaggerModule.setup("doc", app, document)
 
+  await app.listen(9102, '0.0.0.0');
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
