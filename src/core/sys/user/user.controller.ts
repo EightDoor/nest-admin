@@ -1,15 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
-import { SysUser } from './user.entity';
+import { Controller } from '@nestjs/common';
 import { UserService } from './user.service';
-import { Logger } from 'nestjs-pino';
+import { Crud, CrudController } from '@nestjsx/crud';
+import { SysUser } from './user.entity';
 
-@Controller('user')
-export class UserController {
-  constructor(private userService: UserService, private logger: Logger) { }
-
-  @Get("test")
-  async Test(): Promise<SysUser[]> {
-    this.logger.warn("test")
-    return await this.userService.findAll();
+@Crud({
+  model: {
+    type: SysUser
   }
+})
+@Controller("user")
+export class UserController implements CrudController<SysUser> {
+  constructor(public service: UserService) { }
 }
