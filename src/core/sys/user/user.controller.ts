@@ -8,7 +8,7 @@ import { ApiTags } from '@nestjs/swagger';
 @Crud({
   model: {
     type: SysUser
-  },
+  }
 })
 @Controller("user")
 export class UserController implements CrudController<SysUser> {

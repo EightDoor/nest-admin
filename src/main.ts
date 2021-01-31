@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { CrudConfigService } from '@nestjsx/crud';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
@@ -12,6 +13,29 @@ async function bootstrap() {
     logger: true
   });
 
+  //crud全局配置
+  CrudConfigService.load({
+    query: {
+      limit: 10,
+      maxLimit: 5000,
+      cache: 2000,
+    },
+    params: {
+      id: {
+        field: "id",
+        type: "string",
+        primary: true,
+      }
+    },
+    routes: {
+      updateOneBase: {
+        allowParamsOverride: true,
+      },
+      deleteOneBase: {
+        returnDeleted: true,
+      },
+    },
+  })
   // swagger
   const config = new DocumentBuilder()
     .setTitle("react-nest-admin后台管理")

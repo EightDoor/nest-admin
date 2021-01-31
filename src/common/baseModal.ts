@@ -1,6 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { CrudValidationGroups } from "@nestjsx/crud";
+import { IsNotEmpty } from "class-validator";
 import { Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import * as uuid from 'uuid';
+const { CREATE } = CrudValidationGroups
+
 
 // 公共的表添加
 export abstract class BaseColumn {
@@ -8,10 +12,11 @@ export abstract class BaseColumn {
     description: "主键",
     required: false,
   })
-  @PrimaryColumn({
+  @Column({
     name: "id",
     comment: "主键",
-    type: "uuid",
+    primary: true,
+    length: 32,
     transformer: {
       to: () => {
         return uuid.v4().replace(/-/g, "");

@@ -77,7 +77,7 @@ export class SysUser extends BaseColumn {
     {
       name: "status",
       comment: "所属状态是否有效  1是有效 0是失效",
-      enum: [1, 0]
+      type: "tinyint"
     }
   )
   status!: number;
