@@ -1,9 +1,26 @@
-import "reflect-metadata" //显示引入一下
+import "reflect-metadata" //引入一下
 import { NestFactory } from '@nestjs/core';
+import { CrudConfigService } from '@nestjsx/crud';
+// 申明appModule之前
+// crud全局配置
+CrudConfigService.load({
+  query: {
+    limit: 10,
+    maxLimit: 5000,
+    cache: 2000,
+  },
+  routes: {
+    updateOneBase: {
+      allowParamsOverride: true,
+    },
+    deleteOneBase: {
+      returnDeleted: true,
+    },
+  },
+})
 import { AppModule } from './app.module';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { CrudConfigService } from '@nestjsx/crud';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
@@ -12,30 +29,6 @@ async function bootstrap() {
     // 关闭内置logger
     logger: true
   });
-
-  //crud全局配置
-  CrudConfigService.load({
-    query: {
-      limit: 10,
-      maxLimit: 5000,
-      cache: 2000,
-    },
-    params: {
-      id: {
-        field: "id",
-        type: "string",
-        primary: true,
-      }
-    },
-    routes: {
-      updateOneBase: {
-        allowParamsOverride: true,
-      },
-      deleteOneBase: {
-        returnDeleted: true,
-      },
-    },
-  })
   // swagger
   const config = new DocumentBuilder()
     .setTitle("react-nest-admin后台管理")

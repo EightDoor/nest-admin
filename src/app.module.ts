@@ -20,7 +20,6 @@ import { pinoHttpOption } from './config/pino-http-option.config';
       autoLoadEntities: true
     }),
 
-
     ShareModule,
     CoreModule,
     BusinessModule
