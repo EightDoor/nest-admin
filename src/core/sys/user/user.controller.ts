@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { SysUser } from './user.entity';

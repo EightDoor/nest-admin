@@ -20,14 +20,17 @@ export class SysUser extends BaseColumn {
       comment: "密码",
       select: false,
       nullable: true,
-      transformer: {
-        to: (val: string) => {
-          return utils.PasswordEncryPtion(val)
-        },
-        from: (val: string) => {
-          return val
-        }
-      }
+      // transformer: {
+      //   to: (value: string) => {
+      //     console.log(value, 'value')
+      //     // 用户密码最多20位，  判断如果大于60位就是加密过的
+      //     const r = value && value.length > 60 ?value:utils.PasswordEncryPtion(value)
+      //     return r
+      //   },
+      //   from: (val: string) => {
+      //     return val
+      //   }
+      // }
     }
   )
   passWord!: string;
