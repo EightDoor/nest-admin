@@ -12,7 +12,7 @@ export abstract class BaseColumn {
     name: "id",
     comment: "主键",
   })
-  id!: string;
+  id!: number;
 
   @ApiProperty({
     description: "创建时间",
@@ -22,7 +22,7 @@ export abstract class BaseColumn {
     name: "created_at",
     comment: "创建时间",
   })
-  createdAt!: Date;
+  createdAt?: Date | string;
 
   @ApiProperty({
     description: "更新时间",
