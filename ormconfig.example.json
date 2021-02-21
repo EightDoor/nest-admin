@@ -9,5 +9,13 @@
     "dist/**/*.entity{.ts,.js}"
   ],
   "synchronize": false,
-  "logging": "all"
+  "logging": "all",
+  "cache": {
+    "type": "redis",
+    "options": {
+        "host": "localhost",
+        "port": 6379,
+        "password":"123456"
+    }
+  }
 }
