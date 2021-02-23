@@ -17,14 +17,14 @@ import { pinoHttpOption } from './config/pino-http-option.config';
       },
     }),
     TypeOrmModule.forRoot({
-      autoLoadEntities: true
+      autoLoadEntities: true,
     }),
 
     ShareModule,
     CoreModule,
-    BusinessModule
+    BusinessModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
