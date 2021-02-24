@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Crud, CrudController } from '@nestjsx/crud';
+import { JwtAuthGuard } from 'src/core/auth/jwt-auth.guard';
 import { EntityManager, TransactionManager } from 'typeorm';
 import { SysRole } from './role.entity';
 import { RoleService } from './role.service';
@@ -13,6 +14,7 @@ import { RoleMenuService } from './roleMenu.service';
     type: SysRole,
   },
 })
+@UseGuards(JwtAuthGuard)
 @Controller('role')
 export class RoleController implements CrudController<SysRole> {
   constructor(public service: RoleService, public menu: RoleMenuService) {}

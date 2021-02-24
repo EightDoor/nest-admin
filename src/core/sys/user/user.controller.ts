@@ -1,11 +1,11 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { SysUser } from './user.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { SysUserRole } from './userRole.entity';
 import { SysUserRoleService } from './userRole.service';
-import { LoginEntiry } from './login.entity';
+import { JwtAuthGuard } from 'src/core/auth/jwt-auth.guard';
 
 @ApiTags('用户管理')
 @Crud({
@@ -13,6 +13,8 @@ import { LoginEntiry } from './login.entity';
     type: SysUser,
   },
 })
+  
+@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController implements CrudController<SysUser> {
   constructor(
@@ -30,11 +32,5 @@ export class UserController implements CrudController<SysUser> {
   @Post('userRole')
   async setUserRole(@Body() body: SysUserRole): Promise<SysUserRole> {
     return await this.userRoleService.setUserRole(body);
-  }
-  // 登录
-  @Post('login')
-  async login(@Body() body: LoginEntiry): Promise<number> {
-    console.log(body);
-    return 1;
   }
 }

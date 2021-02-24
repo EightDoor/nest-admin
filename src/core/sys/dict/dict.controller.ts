@@ -1,6 +1,7 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Crud, CrudController } from '@nestjsx/crud';
+import { JwtAuthGuard } from 'src/core/auth/jwt-auth.guard';
 import { SysDict } from './dict.entity';
 import { DictService } from './dict.service';
 
@@ -10,6 +11,7 @@ import { DictService } from './dict.service';
     type: SysDict
   }
 })
+@UseGuards(JwtAuthGuard)
 @Controller('dict')
 export class DictController implements CrudController<SysDict> {
   constructor(public service: DictService) { }

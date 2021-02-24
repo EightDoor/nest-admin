@@ -7,7 +7,9 @@ import { SysUserRole } from './userRole.entity';
 import { SysUserRoleService } from './userRole.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([SysUser, SysUserRole])],
+  imports: [
+    TypeOrmModule.forFeature([SysUser, SysUserRole]),
+  ],
   controllers: [UserController],
   providers: [UserService, SysUserRoleService],
   exports: [UserService],
