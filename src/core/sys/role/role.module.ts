@@ -9,6 +9,6 @@ import { RoleMenuService } from './roleMenu.service';
 @Module({
   imports: [TypeOrmModule.forFeature([SysRole, SysRoleMenu])],
   controllers: [RoleController],
-  providers: [RoleService, RoleMenuService]
+  providers: [RoleService, RoleMenuService],
 })
-export class RoleModule { }
+export class RoleModule {}
