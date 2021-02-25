@@ -24,7 +24,7 @@ export class RoleController implements CrudController<SysRole> {
   async menuAssignment(
     @Body() body: SysRoleMenu,
     @TransactionManager() manager: EntityManager,
-  ) {
+  ): Promise<SysRoleMenu> {
     return this.menu.RoleRelationMenu(body, manager);
   }
 

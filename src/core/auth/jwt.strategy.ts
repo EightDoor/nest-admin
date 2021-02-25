@@ -34,6 +34,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
+  // TODO 待解决 每次查询接口都要查询菜单
   async validate(payload: Payload): Promise<Payload> {
     // 查询用户是否有效
     const user = await this.userRepo.findOne(payload.userId);
@@ -66,11 +67,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       }
     }
     // 查询菜单
-    let menusId: number[] = [];
+    let menusId: string[] = [];
     if (roleMenus.length > 0) {
       roleMenus.forEach((item) => {
-        const foramtMenuId = item.menuId?.split(',');
-        menusId = menusId.concat(Number(foramtMenuId) ?? 0);
+        const foramtMenuId: string[] = item.menuId?.split(',') || [];
+        menusId = menusId.concat(foramtMenuId);
       });
     }
 
