@@ -1,39 +1,47 @@
-import { Post, UseGuards, Request, Controller, Get } from "@nestjs/common";
-import { ApiBody, ApiHeader, ApiTags } from "@nestjs/swagger";
-import { AuthService, ReToken } from "./auth.service";
-import { JwtAuthGuard } from "./jwt-auth.guard";
-import { LocalAuthGuard } from "./local-auth.guard";
-
-@ApiTags("验证auth")
-@Controller("auth")
+import {
+  Post,
+  UseGuards,
+  Request,
+  Controller,
+  Get,
+  Body,
+} from '@nestjs/common';
+import { ApiBody, ApiHeader, ApiTags } from '@nestjs/swagger';
+import { Logger } from 'nestjs-pino';
+import { AuthService, ReToken } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { LoginEntiry } from './login.entity';
+@ApiTags('验证auth')
+@Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {
-}
+  constructor(
+    private readonly authService: AuthService,
+    private logger: Logger,
+  ) {}
 
   // 登录
   @ApiBody({
-    type: "string",
+    type: 'string',
     schema: {
       example: {
-        username: "",
-        password: ""
-      }
-    }
+        username: '',
+        password: '',
+      },
+    },
   })
-  @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Request() req: any): Promise<ReToken> {
-    return this.authService.login(req.user)
+  async login(@Body() body: LoginEntiry): Promise<ReToken> {
+    return this.authService.login(body);
   }
 
   // 用户信息
   @ApiHeader({
-    name: "Authorization",
-    description: "Bearer "
+    name: 'Authorization',
+    description: 'Bearer ',
   })
   @UseGuards(JwtAuthGuard)
-  @Get("userInfo")
+  @Get('userInfo')
   async getUserInfo(@Request() req: any): Promise<any> {
-    return req.user;
+    return await this.authService.getUserInfo(req.user);
   }
 }
