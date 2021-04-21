@@ -7,6 +7,13 @@ import { DictModule } from './dict/dict.module';
 import { DictItemModule } from './dict-item/dict-item.module';
 
 @Module({
-  imports: [UserModule, RoleModule, DeptModule, MenuModule, DictModule, DictItemModule]
+  imports: [
+    UserModule,
+    RoleModule,
+    DeptModule,
+    MenuModule,
+    DictModule,
+    DictItemModule,
+  ],
 })
-export class SysModule { }
+export class SysModule {}

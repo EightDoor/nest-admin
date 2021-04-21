@@ -25,13 +25,13 @@ export function pinoHttpOption(envDevMode = 'development'): PinoHttp.Options {
         params: any;
         query: any;
         body: any;
-        headers: any
+        headers: any;
       }) {
         req.httpVersion = req.raw.httpVersion;
         req.params = req.raw.params;
         req.query = req.raw.query;
         req.body = req.raw.body;
-        req.headers = "...";
+        req.headers = '...';
         return req;
       },
       err(err: {
@@ -49,10 +49,10 @@ export function pinoHttpOption(envDevMode = 'development'): PinoHttp.Options {
     prettyPrint:
       envDevMode === 'development'
         ? {
-          colorize: true,
-          levelFirst: true,
-          translateTime: 'yyyy-mm-dd HH:MM:ss.l o',
-        }
+            colorize: true,
+            levelFirst: true,
+            translateTime: 'yyyy-mm-dd HH:MM:ss.l o',
+          }
         : false,
   };
 }
